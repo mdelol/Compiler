@@ -33,6 +33,8 @@ While : 'while';
 Write: 'write';
 Read: 'read';
 New: 'new';
+True: 'true';
+False: 'false';
 
 LeftParen : '(';
 RightParen : ')';
@@ -67,7 +69,7 @@ NotEqual : '!=';
 Dot : '.';
 
 /* Variable declaration */
-variableType:
+variableType
     : simpleVariableType
     | simpleVariableType '[]'
     | 'void'
@@ -83,13 +85,17 @@ simpleVariableType
 
 variableDeclaration
     :   variableType Identifier ('=' initExpression)? ';'
+    ;
 
 initExpression
     : expression
-    | arrayInitExpression;
+    | Constant
+    | arrayInitExpression
+    ;
 
 arrayInitExpression
     : 'new' simpleVariableType '[' IntegerConstant ']'
+    ;
 
 /* Function declaration */
 functionDefinition
@@ -240,9 +246,9 @@ Constant
     :   IntegerConstant
     |   FloatingConstant
     |   StringConstant
+    |   BooleanConstant
     ;
 
-fragment
 IntegerConstant
     :   NonzeroDigit Digit*
     ;
@@ -277,6 +283,12 @@ fragment
 SChar
     :   ~["\\\r\n]
     |   '\\' ['"?abfnrtv\\]
+    ;
+
+fragment
+BooleanConstant
+    : True
+    | False
     ;
 
 /* Symbols */

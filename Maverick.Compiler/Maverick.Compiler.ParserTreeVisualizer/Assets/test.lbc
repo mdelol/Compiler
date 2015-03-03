@@ -1,0 +1,13 @@
+﻿int a = 2;
+
+void main() {
+	var b = 3;
+	var flag = true;
+
+	for (int i = 0; i < 5; i++) {
+		a = a + b;
+	}
+
+
+	write(test);
+}

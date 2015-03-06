@@ -1,7 +1,7 @@
 ﻿string check = "";
-int a = 0;
+int a = 2;
 int b = 2;
-double c = 0.3;
+float c = 0.3;
 bool d = true;
 
 int add(int a, int b) {
@@ -9,11 +9,13 @@ int add(int a, int b) {
 }
 
 void main() {
+	
 	read(a);
 
 	while (a < 100) {
 		int i;
-		for (i = 0; i < 10; i = i + 1) {
+		
+		for (i = 3; i < 10; i = i + 1) {
 			a = add(a, b) + 3;
 		
 			if (a < 10) {

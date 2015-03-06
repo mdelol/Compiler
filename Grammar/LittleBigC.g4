@@ -30,11 +30,7 @@ Int : 'int';
 Return : 'return';
 Void : 'void';
 While : 'while';
-Write: 'write';
-Read: 'read';
 New: 'new';
-True: 'true';
-False: 'false';
 
 LeftParen : '(';
 RightParen : ')';
@@ -94,7 +90,7 @@ initExpression
     ;
 
 arrayInitExpression
-    : 'new' simpleVariableType '[' IntegerConstant ']'
+    : 'new' simpleVariableType '[' expression ']'
     ;
 
 /* Function declaration */
@@ -250,12 +246,7 @@ Constant
     ;
 
 IntegerConstant
-    :   NonzeroDigit Digit*
-    ;
-
-fragment
-NonzeroDigit
-    :   [1-9]
+    :   Digit+
     ;
 
 fragment
@@ -285,10 +276,9 @@ SChar
     |   '\\' ['"?abfnrtv\\]
     ;
 
-fragment
 BooleanConstant
-    : True
-    | False
+    : 'true'
+    | 'false'
     ;
 
 /* Symbols */

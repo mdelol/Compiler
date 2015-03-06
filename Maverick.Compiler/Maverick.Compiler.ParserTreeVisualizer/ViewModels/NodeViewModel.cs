@@ -31,6 +31,28 @@ namespace Maverick.Compiler.ParserTreeVisualizer.ViewModels
 
             var children = new List<NodeViewModel>();
 
+            if (node.children != null)
+            {
+                foreach (var child in node.children)
+                {
+                    NodeViewModel childItem;
+
+                    if (child is ParserRuleContext)
+                    {
+                        childItem = new NodeViewModel((ParserRuleContext)child, this, parser);
+
+                        children.Add(childItem);
+                    }
+                    else
+                    {
+                        childItem = new NodeViewModel(child.ToStringTree(parser), this);
+
+                        children.Add(childItem);
+                    }
+                }
+            }
+
+            /*
             for (int i = 0; i < node.ChildCount; i++)
             {
                 if (node.GetChild<ParserRuleContext>(i) != null)
@@ -41,12 +63,12 @@ namespace Maverick.Compiler.ParserTreeVisualizer.ViewModels
                 }
                 else
                 {
-                    /*
                     var child = new NodeViewModel(node.GetChild(i).ToStringTree(parser), this);
 
-                    children.Add(child);*/
+                    children.Add(child);
                 }
             }
+             * */
 
             _children = new ReadOnlyCollection<NodeViewModel>(children);
         }

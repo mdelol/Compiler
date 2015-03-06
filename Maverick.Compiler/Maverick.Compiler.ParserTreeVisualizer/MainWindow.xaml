@@ -17,7 +17,7 @@
                     <Separator></Separator>
                     <MenuItem Header="Exit"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Buld">
+                <MenuItem Header="Build">
                     <MenuItem Header="Parse" Click="ParseMenuItem_Click"></MenuItem>
                 </MenuItem>
             </Menu>

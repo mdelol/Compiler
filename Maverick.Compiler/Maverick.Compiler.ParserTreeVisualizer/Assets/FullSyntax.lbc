@@ -1,0 +1,28 @@
+﻿string check = "";
+int a = 0;
+int b = 2;
+double c = 0.3;
+bool d = true;
+
+int add(int a, int b) {
+	return a + b;
+}
+
+void main() {
+	read(a);
+
+	while (a < 100) {
+		int i;
+		for (i = 0; i < 10; i = i + 1) {
+			a = add(a, b) + 3;
+		
+			if (a < 10) {
+				d = true;
+			} else {
+				d = false
+			}
+		}
+	}
+	
+	write(test);
+}

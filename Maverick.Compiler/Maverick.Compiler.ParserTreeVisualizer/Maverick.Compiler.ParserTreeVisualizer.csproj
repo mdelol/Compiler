@@ -103,7 +103,9 @@
     <Content Include="Assets\test.lbc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Assets\FullSyntax.lbc" />
+    <None Include="Assets\FullSyntax.lbc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

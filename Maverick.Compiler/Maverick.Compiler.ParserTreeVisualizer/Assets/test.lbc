@@ -1,4 +1,4 @@
-﻿string a = ";
+﻿string a = "";
 int b = 2;
 
 void main() {

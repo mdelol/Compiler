@@ -21,7 +21,7 @@ void main() {
 			if (a < 10) {
 				d = true;
 			} else {
-				d = false
+				d = false;
 			}
 		}
 	}

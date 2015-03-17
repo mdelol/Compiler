@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BA286BE1-A9C5-494C-87C0-4529D478AF05}</ProjectGuid>
+    <ProjectGuid>{2D11537A-F20D-49FE-A3B3-642B7BD944F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maverick.Compiler.ANTLRParser</RootNamespace>
-    <AssemblyName>Maverick.Compiler.ANTLRParser</AssemblyName>
+    <RootNamespace>Maverick.Compiler.SemanticAnalyzer</RootNamespace>
+    <AssemblyName>Maverick.Compiler.SemanticAnalyzer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,22 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LittleBigCBaseListener.cs" />
-    <Compile Include="LittleBigCBaseVisitor.cs" />
-    <Compile Include="LittleBigCLexer.cs" />
-    <Compile Include="LittleBigCListener.cs" />
-    <Compile Include="LittleBigCParser.cs" />
-    <Compile Include="LittleBigCVisitor.cs" />
+    <Compile Include="TreeListener.cs" />
+    <Compile Include="Semantic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LittleBigC.tokens" />
-    <None Include="LittleBigCLexer.tokens" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="libs\Antlr4.Runtime.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\Maverick.Compiler.ANTLRParser\Maverick.Compiler.ANTLRParser.csproj">
+      <Project>{ba286be1-a9c5-494c-87c0-4529d478af05}</Project>
+      <Name>Maverick.Compiler.ANTLRParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

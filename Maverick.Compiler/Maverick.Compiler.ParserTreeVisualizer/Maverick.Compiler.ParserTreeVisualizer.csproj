@@ -121,6 +121,10 @@
       <Project>{ba286be1-a9c5-494c-87c0-4529d478af05}</Project>
       <Name>Maverick.Compiler.ANTLRParser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Maverick.Compiler.SemanticAnalyzer\Maverick.Compiler.SemanticAnalyzer.csproj">
+      <Project>{2d11537a-f20d-49fe-a3b3-642b7bd944f1}</Project>
+      <Name>Maverick.Compiler.SemanticAnalyzer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

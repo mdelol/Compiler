@@ -231,7 +231,6 @@ fragment
 Nondigit
     :   [a-zA-Z_]
     ;
-
 fragment
 Digit
     :   [0-9]
@@ -246,7 +245,7 @@ Constant
     ;
 
 IntegerConstant
-    :   Digit+
+    :   [0-9]+
     ;
 
 fragment

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maverick.Compiler.ANTLRPars
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maverick.Compiler.ParserTreeVisualizer", "Maverick.Compiler.ParserTreeVisualizer\Maverick.Compiler.ParserTreeVisualizer.csproj", "{3F15A350-2629-4AB0-A433-E643B21525F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maverick.Compiler.SemanticAnalyzer", "Maverick.Compiler.SemanticAnalyzer\Maverick.Compiler.SemanticAnalyzer.csproj", "{2D11537A-F20D-49FE-A3B3-642B7BD944F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3F15A350-2629-4AB0-A433-E643B21525F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F15A350-2629-4AB0-A433-E643B21525F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F15A350-2629-4AB0-A433-E643B21525F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D11537A-F20D-49FE-A3B3-642B7BD944F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D11537A-F20D-49FE-A3B3-642B7BD944F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D11537A-F20D-49FE-A3B3-642B7BD944F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D11537A-F20D-49FE-A3B3-642B7BD944F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

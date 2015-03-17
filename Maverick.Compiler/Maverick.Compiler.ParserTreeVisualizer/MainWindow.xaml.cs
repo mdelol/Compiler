@@ -18,6 +18,7 @@ using System.Threading;
 using Antlr4.Runtime.Tree;
 using Microsoft.Win32;
 using Maverick.Compiler.ParserTreeVisualizer.Views;
+using Maverick.Compiler.SemanticAnalyzer;
 
 namespace Maverick.Compiler.ParserTreeVisualizer
 {
@@ -125,8 +126,20 @@ namespace Maverick.Compiler.ParserTreeVisualizer
             TreePanel.Children.Add(treeView);
 
 
+            // Semantic analyzer 
+            var _newParser = new LittleBigCParser(tokenStream);
+
+            var semanticAnalyzer = new Semantic(root);
+
+            var semanticResults = semanticAnalyzer.Result;
+
             // Logs 
             foreach (var log in logs.LogsCollection)
+            {
+                LogsListBox.Items.Add(log);
+            }
+
+            foreach (var log in semanticResults)
             {
                 LogsListBox.Items.Add(log);
             }

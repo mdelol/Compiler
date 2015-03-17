@@ -45,7 +45,9 @@ namespace Maverick.Compiler.ParserTreeVisualizer.ViewModels
                     }
                     else
                     {
-                        childItem = new NodeViewModel(child.ToStringTree(parser), this);
+                        var vocubalary = LittleBigCLexer.DefaultVocabulary;
+
+                        childItem = new NodeViewModel(String.Format("{0}: {1}", vocubalary.GetSymbolicName(((TerminalNodeImpl)child).Symbol.Type), child.ToStringTree(parser)), this);
 
                         children.Add(childItem);
                     }

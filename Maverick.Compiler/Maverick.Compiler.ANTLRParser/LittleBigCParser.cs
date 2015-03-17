@@ -118,6 +118,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitCompilationUnit(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCompilationUnit(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -169,6 +174,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitTranslationUnit(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTranslationUnit(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -247,6 +257,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitExternalDeclaration(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExternalDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -304,6 +319,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitVariableType(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitVariableType(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -359,6 +379,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitSimpleVariableType(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSimpleVariableType(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -408,6 +433,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitVariableDeclaration(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitVariableDeclaration(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -464,6 +494,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitInitExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInitExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -525,6 +560,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitArrayInitExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArrayInitExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -575,6 +615,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitFunctionDefinition(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionDefinition(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -631,6 +676,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitFormalParameters(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFormalParameters(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -708,6 +758,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitFormalParameter(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFormalParameter(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -751,6 +806,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitBlockItemList(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBlockItemList(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -828,6 +888,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitBlockItem(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBlockItem(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -909,6 +974,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitStatement(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -986,6 +1056,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitCompoundStatement(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCompoundStatement(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1035,6 +1110,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitExpressionStatement(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExpressionStatement(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1090,6 +1170,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitSelectionStatement(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSelectionStatement(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1149,6 +1234,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitIterationStatement(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIterationStatement(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1237,6 +1327,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitJumpStatement(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitJumpStatement(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1310,6 +1405,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitPrimaryExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPrimaryExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1379,6 +1479,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitPostfixExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPostfixExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1483,6 +1588,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitArgumentExpressionList(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArgumentExpressionList(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1560,6 +1670,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitMultiplicativeExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicativeExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1664,6 +1779,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitAdditiveExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAdditiveExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1756,6 +1876,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitRelationalExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitRelationalExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -1870,6 +1995,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitEqualityExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitEqualityExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -1963,6 +2093,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitLogicalAndExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitLogicalAndExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -2040,6 +2175,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitLogicalOrExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitLogicalOrExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -2119,6 +2259,11 @@ public partial class LittleBigCParser : Parser {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitAssignmentExpression(this);
 		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAssignmentExpression(this);
+			else return visitor.VisitChildren(this);
+		}
 	}
 
 	[RuleVersion(0)]
@@ -2171,6 +2316,11 @@ public partial class LittleBigCParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			ILittleBigCListener typedListener = listener as ILittleBigCListener;
 			if (typedListener != null) typedListener.ExitExpression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILittleBigCVisitor<TResult> typedVisitor = visitor as ILittleBigCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 

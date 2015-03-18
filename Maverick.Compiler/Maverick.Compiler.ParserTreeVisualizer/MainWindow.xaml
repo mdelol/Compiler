@@ -35,6 +35,11 @@
                 <Grid Background="#FFE5E5E5" Name="TreePanel">
                 </Grid>
             </TabItem>
+            <TabItem Header="Scopes">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox Name="ScopesListBox" HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="297"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <ListBox Name="LogsListBox" HorizontalAlignment="Left" Margin="10,501,0,10" Width="812"/>
 

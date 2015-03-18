@@ -392,6 +392,18 @@ public partial class LittleBigCBaseListener : ILittleBigCListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpression([NotNull] LittleBigCParser.ExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="LittleBigCParser.constant"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConstant([NotNull] LittleBigCParser.ConstantContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="LittleBigCParser.constant"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConstant([NotNull] LittleBigCParser.ConstantContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

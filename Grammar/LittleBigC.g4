@@ -85,7 +85,7 @@ variableDeclaration
 
 initExpression
     : expression
-    | Constant
+    | constant
     | arrayInitExpression
     ;
 
@@ -153,7 +153,7 @@ jumpStatement
 /* Expressions */
 primaryExpression
     :   Identifier
-    |   Constant
+    |   constant
     |   '(' expression ')'
     ;
 
@@ -237,7 +237,7 @@ Digit
     ;
 
 /* Constants (inline numbers, strings) */
-Constant
+constant
     :   IntegerConstant
     |   FloatingConstant
     |   StringConstant
@@ -248,7 +248,7 @@ IntegerConstant
     :   [0-9]+
     ;
 
-fragment
+
 FloatingConstant
     :   DigitSequence? '.' DigitSequence
     |   DigitSequence '.'
@@ -259,7 +259,7 @@ DigitSequence
     :   Digit+
     ;
 
-fragment
+
 StringConstant
     :   '"' SCharSequence? '"'
     ;

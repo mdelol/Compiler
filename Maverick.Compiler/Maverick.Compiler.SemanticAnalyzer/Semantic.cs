@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime.Tree;
+using Maverick.Compiler.SemanticAnalyzer.Scopes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,13 @@ namespace Maverick.Compiler.SemanticAnalyzer
     public class Semantic
     {
         private IParseTree _root;
-        private TreeListener _listener;
-        public List<String> Result
+        private DefinitionListener _listener;
+
+        public List<Scope> Scopes
         {
             get
             {
-                return _listener.Results;
+                return _listener.Scopes;
             }
         }
 
@@ -23,7 +25,7 @@ namespace Maverick.Compiler.SemanticAnalyzer
         {
             _root = root;
 
-            _listener = new TreeListener();
+            _listener = new DefinitionListener();
 
             ParseTreeWalker.Default.Walk(_listener, root);
         }

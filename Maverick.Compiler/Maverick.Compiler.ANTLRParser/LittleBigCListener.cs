@@ -328,4 +328,14 @@ public interface ILittleBigCListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitExpression([NotNull] LittleBigCParser.ExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="LittleBigCParser.constant"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterConstant([NotNull] LittleBigCParser.ConstantContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="LittleBigCParser.constant"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitConstant([NotNull] LittleBigCParser.ConstantContext context);
 }

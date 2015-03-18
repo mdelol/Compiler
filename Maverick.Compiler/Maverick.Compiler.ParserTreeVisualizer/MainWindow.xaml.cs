@@ -19,6 +19,8 @@ using Antlr4.Runtime.Tree;
 using Microsoft.Win32;
 using Maverick.Compiler.ParserTreeVisualizer.Views;
 using Maverick.Compiler.SemanticAnalyzer;
+using Maverick.Compiler.SemanticAnalyzer.Scopes;
+using Maverick.Compiler.SemanticAnalyzer.Definitions;
 
 namespace Maverick.Compiler.ParserTreeVisualizer
 {
@@ -131,15 +133,62 @@ namespace Maverick.Compiler.ParserTreeVisualizer
 
             var semanticAnalyzer = new Semantic(root);
 
-            var semanticResults = semanticAnalyzer.Result;
+            var scopes = semanticAnalyzer.Scopes;
 
-            // Logs 
-            foreach (var log in logs.LogsCollection)
+            ScopesListBox.Items.Clear();
+
+            foreach (var scope in scopes)
             {
-                LogsListBox.Items.Add(log);
+
+                ScopesListBox.Items.Add(String.Format("{0} scope", scope.Name));
+
+                if (scope.ScopeType != ScopeType.Global)
+                {
+                    ScopesListBox.Items.Add("\tParameter definitions:");
+
+                    var parameters = new StringBuilder();
+
+                    parameters.Append("\t[");
+
+                    if (scope.ParameterDefinitions.Count > 0)
+                    {
+                        foreach (var parameter in scope.ParameterDefinitions)
+                        {
+                            parameters.Append(parameter.Key + ", ");
+                        }
+
+                        parameters.Remove(parameters.Length - 2, 2);
+                    }
+
+                    parameters.Append("]");
+
+                    ScopesListBox.Items.Add(parameters.ToString());
+                }
+
+                ScopesListBox.Items.Add("\tVariable definitions:");
+
+                var variables = new StringBuilder();
+
+                variables.Append("\t[");
+
+                if (scope.VariableDefinitions.Count > 0)
+                {
+                    foreach (var variable in scope.VariableDefinitions)
+                    {
+                        variables.Append(variable.Key + ", ");
+                    }
+
+                    variables.Remove(variables.Length - 2, 2);
+                }
+
+                variables.Append("]");
+
+                ScopesListBox.Items.Add(variables.ToString());
+                ScopesListBox.Items.Add("");
             }
 
-            foreach (var log in semanticResults)
+            // Logs
+            foreach (var log in logs.LogsCollection)
             {
                 LogsListBox.Items.Add(log);
             }

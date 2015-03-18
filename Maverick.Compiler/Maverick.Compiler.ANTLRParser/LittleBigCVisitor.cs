@@ -209,4 +209,10 @@ public interface ILittleBigCVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] LittleBigCParser.ExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="LittleBigCParser.constant"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstant([NotNull] LittleBigCParser.ConstantContext context);
 }

@@ -47,6 +47,8 @@
     <Compile Include="DefinitionListener.cs" />
     <Compile Include="Semantic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResolvingListener.cs" />
+    <Compile Include="TypeCheckListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maverick.Compiler.ANTLRParser\Maverick.Compiler.ANTLRParser.csproj">

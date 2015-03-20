@@ -44,8 +44,6 @@ namespace Maverick.Compiler.ParserTreeVisualizer
         {
             var input = new FileStream(@"Assets/test.lbc", FileMode.Open);
             var reader = new StreamReader(input);
-
-
         }
 
 
@@ -146,45 +144,33 @@ namespace Maverick.Compiler.ParserTreeVisualizer
                 {
                     ScopesListBox.Items.Add("\tParameter definitions:");
 
-                    var parameters = new StringBuilder();
-
-                    parameters.Append("\t[");
-
                     if (scope.ParameterDefinitions.Count > 0)
                     {
                         foreach (var parameter in scope.ParameterDefinitions)
                         {
-                            parameters.Append(parameter.Key + ", ");
+                            ScopesListBox.Items.Add(String.Format("\t\t{0} : {1}", parameter.Key, parameter.Value.VariableType.ToString()));
                         }
 
-                        parameters.Remove(parameters.Length - 2, 2);
                     }
-
-                    parameters.Append("]");
-
-                    ScopesListBox.Items.Add(parameters.ToString());
                 }
 
                 ScopesListBox.Items.Add("\tVariable definitions:");
 
-                var variables = new StringBuilder();
-
-                variables.Append("\t[");
 
                 if (scope.VariableDefinitions.Count > 0)
                 {
                     foreach (var variable in scope.VariableDefinitions)
                     {
-                        variables.Append(variable.Key + ", ");
+                        ScopesListBox.Items.Add(String.Format("\t\t{0} : {1}", variable.Key, variable.Value.VariableType.ToString()));
                     }
-
-                    variables.Remove(variables.Length - 2, 2);
                 }
 
-                variables.Append("]");
-
-                ScopesListBox.Items.Add(variables.ToString());
                 ScopesListBox.Items.Add("");
+            }
+
+            foreach (var error in semanticAnalyzer.Errors)
+            {
+                LogsListBox.Items.Add(error);
             }
 
             // Logs

@@ -9,6 +9,7 @@ namespace Maverick.Compiler.SemanticAnalyzer.Definitions
     public class FunctionDefinition
     {
         private LittleBigCParser.FunctionDefinitionContext _context;
+        private VariableType _returnType;
 
         public String Name
         {

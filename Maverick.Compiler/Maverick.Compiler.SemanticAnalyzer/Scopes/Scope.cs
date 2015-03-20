@@ -64,7 +64,7 @@ namespace Maverick.Compiler.SemanticAnalyzer.Scopes
             _functionDefinition = functionDefinition;
         }
 
-        public void AddVariableDefinition(VariableDefinition variableDefinition) 
+        public void AddVariableDefinition(VariableDefinition variableDefinition)
         {
             _variableDefinitions.Add(variableDefinition.Name, variableDefinition);
         }
@@ -72,6 +72,21 @@ namespace Maverick.Compiler.SemanticAnalyzer.Scopes
         public void AddParameterDefinition(ParameterDefinition parameterDefinition)
         {
             _parameterDefinitions.Add(parameterDefinition.Name, parameterDefinition);
+        }
+
+        public VariableDefinition GetVariableDefinition(String name)
+        {
+            return _variableDefinitions.ContainsKey(name) ? _variableDefinitions[name] : null;
+        }
+
+        public ParameterDefinition GetParameterDefinition(String name)
+        {
+            return _parameterDefinitions.ContainsKey(name) ? _parameterDefinitions[name] : null;
+        }
+
+        public bool IsGlobal()
+        {
+            return _functionDefinition == null;
         }
     }
 }

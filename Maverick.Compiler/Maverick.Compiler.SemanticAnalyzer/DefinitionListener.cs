@@ -13,12 +13,29 @@ namespace Maverick.Compiler.SemanticAnalyzer
         private Scope _globalScope = new Scope();
         private List<Scope> _scopes = new List<Scope>();
         private Scope _currentScope;
+        private List<String> _errors = new List<String>();
 
         public List<Scope> Scopes
         {
             get
             {
                 return _scopes;
+            }
+        }
+
+        public Scope GlobalScope
+        {
+            get
+            {
+                return _globalScope;
+            }
+        }
+
+        public List<String> Errors
+        {
+            get
+            {
+                return _errors;
             }
         }
 
@@ -33,14 +50,32 @@ namespace Maverick.Compiler.SemanticAnalyzer
             var function = new FunctionDefinition(context);
             var scope = new Scope(function);
 
-            _scopes.Add(scope);
-            _currentScope = scope;
+            if (_scopes.Any(x => x.Name == scope.Name))
+            {
+                var node = context.Identifier();
+
+                _errors.Add(String.Format("[{0}:{1}] Semantic error: Function {2} already defined.", node.Symbol.Line, node.Symbol.StartIndex, scope.Name));
+            }
+            else
+            {
+                _scopes.Add(scope);
+                _currentScope = scope;
+            }
         }
 
         public override void EnterFormalParameter(LittleBigCParser.FormalParameterContext context)
         {
             var parameter = new ParameterDefinition(context);
-            _currentScope.AddParameterDefinition(parameter);
+
+            if (_currentScope.ParameterDefinitions.ContainsKey(parameter.Name))
+            {
+                var node = context.Identifier();
+                _errors.Add(String.Format("[{0}:{1}] Semantic error: Parameter {2} already defined.", node.Symbol.Line, node.Symbol.StartIndex, parameter.Name));
+            }
+            else
+            {
+                _currentScope.AddParameterDefinition(parameter);
+            }
         }
 
         public override void ExitFunctionDefinition(LittleBigCParser.FunctionDefinitionContext context)
@@ -51,7 +86,16 @@ namespace Maverick.Compiler.SemanticAnalyzer
         public override void EnterVariableDeclaration(LittleBigCParser.VariableDeclarationContext context)
         {
             var variable = new VariableDefinition(context);
-            _currentScope.AddVariableDefinition(variable);
+
+            if (_currentScope.VariableDefinitions.ContainsKey(variable.Name))
+            {
+                var node = context.Identifier();
+                _errors.Add(String.Format("[{0}:{1}] Semantic error: Variable {2} already defined.", node.Symbol.Line, node.Symbol.StartIndex, variable.Name));
+            }
+            else
+            {
+                _currentScope.AddVariableDefinition(variable);
+            }
         }
     }
 }

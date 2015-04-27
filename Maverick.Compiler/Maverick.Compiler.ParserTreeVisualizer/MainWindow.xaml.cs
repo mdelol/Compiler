@@ -21,6 +21,8 @@ using Maverick.Compiler.ParserTreeVisualizer.Views;
 using Maverick.Compiler.SemanticAnalyzer;
 using Maverick.Compiler.SemanticAnalyzer.Scopes;
 using Maverick.Compiler.SemanticAnalyzer.Definitions;
+using Maverick.Compiler.CodeGeneration;
+using System.Diagnostics;
 
 namespace Maverick.Compiler.ParserTreeVisualizer
 {
@@ -177,6 +179,44 @@ namespace Maverick.Compiler.ParserTreeVisualizer
             foreach (var log in logs.LogsCollection)
             {
                 LogsListBox.Items.Add(log);
+            }
+
+
+            // Compiler
+            if (semanticAnalyzer.Errors.Count == 0 && logs.LogsCollection.Count == 0)
+            {
+                var name = "HelloWorld";
+                var codeGenListener = new CodeGenerationListener(name);
+
+                ParseTreeWalker.Default.Walk(codeGenListener, root);
+
+                if (codeGenListener.Errors.Count != 0)
+                {
+                    foreach (var error in codeGenListener.Errors)
+                    {
+                        LogsListBox.Items.Add(error);
+                    }
+                }
+                else
+                {
+                    var modName = String.Format("{0}.exe", name);
+
+                    Process p = new Process();
+                    p.StartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\ildasm.exe";
+                    p.StartInfo.Arguments = "/text /nobar \"" + modName;
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    p.Start();
+                    string s = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit();
+                    p.Close();
+
+                    Process.Start(modName);
+
+                    SourceCodeTextEditor.Text = s;
+                }
             }
         }
     }
